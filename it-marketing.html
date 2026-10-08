@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT va Marketing - Nihol</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            padding: 10rem 2rem 4rem;
+            background: linear-gradient(135deg, #0099CC 0%, #1EB53A 50%, #D4AF37 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url('data:image/svg+xml,<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="tech-pattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse"><rect x="10" y="10" width="15" height="15" fill="white" opacity="0.05"/><rect x="35" y="35" width="10" height="10" fill="rgba(212,175,55,0.2)"/><circle cx="60" cy="20" r="5" fill="white" opacity="0.08"/><path d="M 15 60 L 25 60 L 20 70 Z" fill="white" opacity="0.06"/></pattern></defs><rect width="80" height="80" fill="url(%23tech-pattern)"/></svg>');
+            animation: slidePattern 20s linear infinite;
+        }
+        
+        @keyframes slidePattern {
+            from { background-position: 0 0; }
+            to { background-position: 80px 80px; }
+        }
+        
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header-decoration {
+            position: relative;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+        }
+        
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, rgba(0,153,204,0.3), rgba(30,181,58,0.3));
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 2px solid rgba(212, 175, 55, 0.4);
+        }
+        
+        .header-icon-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        
+        .header-icon-item {
+            background: rgba(255, 255, 255, 0.18);
+            padding: 1.2rem;
+            border-radius: 15px;
+            font-size: 2.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header-icon-item:hover {
+            background: rgba(212, 175, 55, 0.3);
+            transform: translateY(-8px) scale(1.05);
+            border-color: rgba(212, 175, 55, 0.6);
+        }
+        
+        .header-icon-item::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.3));
+            border-radius: 15px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .header-icon-item:hover::before {
+            opacity: 1;
+        }
+        
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .subject-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .subject-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subject-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--uzbek-blue);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">✦</span>
+                <span class="logo-text">Nihol</span>
+            </a>
+            <a href="index.html" class="btn btn-primary">Orqaga</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>IT va Marketing</h1>
+        <p style="font-size: 1.2rem; opacity: 0.95;">Zamonaviy raqamli kasblar</p>
+        
+        <div class="header-decoration">
+            <div class="tech-badge">
+                <span>💻</span>
+                <span>O'zbekistonning raqamli kelajagi</span>
+                <span>🚀</span>
+            </div>
+            <div class="header-icon-grid">
+                <div class="header-icon-item">💻</div>
+                <div class="header-icon-item">📱</div>
+                <div class="header-icon-item">🎨</div>
+                <div class="header-icon-item">📊</div>
+                <div class="header-icon-item">🤖</div>
+                <div class="header-icon-item">🔐</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="subjects-grid">
+        <div class="subject-card">
+            <div class="subject-icon">💻</div>
+            <h3>Web Dasturlash</h3>
+            <p>HTML, CSS, JavaScript va React</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">📱</div>
+            <h3>Mobil Dasturlash</h3>
+            <p>Android va iOS ilovalar yaratish</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">🎨</div>
+            <h3>UI/UX Dizayn</h3>
+            <p>Foydalanuvchi interfeysi dizayni</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">📊</div>
+            <h3>Raqamli Marketing</h3>
+            <p>SMM, SEO va reklama strategiyalari</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">🤖</div>
+            <h3>Sun'iy Intellekt</h3>
+            <p>Machine Learning va AI asoslari</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">🔐</div>
+            <h3>Kiberbexatarlik</h3>
+            <p>Axborot xavfsizligi va himoya</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">📈</div>
+            <h3>Data Science</h3>
+            <p>Ma'lumotlar tahlili va vizualizatsiya</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">☁️</div>
+            <h3>Cloud Computing</h3>
+            <p>AWS, Azure va bulutli texnologiyalar</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">🎥</div>
+            <h3>Kontent Marketing</h3>
+            <p>Video va grafik kontent yaratish</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

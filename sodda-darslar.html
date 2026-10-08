@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soddalashtirilgan Darslar - Matematika</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; padding: 2rem; }
+        .lesson-container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 25px; padding: 3rem; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        .lesson-header { text-align: center; margin-bottom: 3rem; }
+        .lesson-header h1 { font-size: 2.5rem; color: #667eea; margin-bottom: 1rem; }
+        .lesson-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .lesson-card { background: #f8f9fa; padding: 2rem; border-radius: 20px; border-left: 5px solid #667eea; transition: all 0.3s ease; }
+        .lesson-card:hover { transform: translateX(10px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2); }
+        .lesson-card h3 { color: #667eea; margin-bottom: 1rem; font-size: 1.5rem; }
+        .lesson-card p { color: #6B7280; line-height: 1.7; margin-bottom: 1rem; }
+        .example-box { background: white; padding: 1.5rem; border-radius: 15px; margin: 1rem 0; border: 2px solid #e5e7eb; }
+        .example-box strong { color: #667eea; display: block; margin-bottom: 0.5rem; }
+        .btn-practice { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 0.8rem 2rem; border: none; border-radius: 12px; cursor: pointer; font-weight: 600; margin-top: 1rem; }
+        .btn-practice:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3); }
+    </style>
+</head>
+<body>
+    <div class="lesson-container">
+        <div class="lesson-header">
+            <h1>📖 Soddalashtirilgan Darslar</h1>
+            <p style="color: #6B7280; font-size: 1.2rem;">Oson tilda tushuntirilgan matematik mavzular</p>
+        </div>
+
+        <div class="lesson-grid">
+            <div class="lesson-card">
+                <h3>1. Kvadrat Tenglamalar Asoslari</h3>
+                <p>Kvadrat tenglama - bu ax² + bx + c = 0 ko'rinishidagi tenglama.</p>
+                
+                <div class="example-box">
+                    <strong>Oddiy misol:</strong>
+                    x² - 5x + 6 = 0
+                    <br><br>
+                    <strong>Yechim:</strong>
+                    <br>1) Diskriminantni topamiz: D = b² - 4ac = 25 - 24 = 1
+                    <br>2) Ildizlar: x₁ = 2, x₂ = 3
+                </div>
+                
+                <button class="btn-practice" onclick="alert('Mashq sahifasi tez orada qo\'shiladi!')">Mashq qilish</button>
+            </div>
+
+            <div class="lesson-card">
+                <h3>2. Ko'paytirish Formulalari</h3>
+                <p>Qisqa ko'paytirish formulalari - bu tez hisoblash uchun maxsus formulalar.</p>
+                
+                <div class="example-box">
+                    <strong>Asosiy formulalar:</strong>
+                    <br>• (a + b)² = a² + 2ab + b²
+                    <br>• (a - b)² = a² - 2ab + b²
+                    <br>• (a + b)(a - b) = a² - b²
+                    <br><br>
+                    <strong>Misol:</strong>
+                    <br>(5 + 3)² = 25 + 30 + 9 = 64
+                </div>
+                
+                <button class="btn-practice" onclick="alert('Mashq sahifasi tez orada qo\'shiladi!')">Mashq qilish</button>
+            </div>
+
+            <div class="lesson-card">
+                <h3>3. Kasrlar bilan Ishlash</h3>
+                <p>Kasrlarni qo'shish, ayirish, ko'paytirish va bo'lish - oddiy qoidalar.</p>
+                
+                <div class="example-box">
+                    <strong>Qo'shish:</strong>
+                    <br>1/2 + 1/3 = 3/6 + 2/6 = 5/6
+                    <br><br>
+                    <strong>Ko'paytirish:</strong>
+                    <br>2/3 × 3/4 = 6/12 = 1/2
+                </div>
+                
+                <button class="btn-practice" onclick="alert('Mashq sahifasi tez orada qo\'shiladi!')">Mashq qilish</button>
+            </div>
+
+            <div class="lesson-card">
+                <h3>4. Foizlar</h3>
+                <p>Foiz - bu 100 dan bir qism. % belgisi bilan belgilanadi.</p>
+                
+                <div class="example-box">
+                    <strong>Misol 1:</strong>
+                    <br>200 ning 25% ini toping
+                    <br>Yechim: 200 × 25/100 = 50
+                    <br><br>
+                    <strong>Misol 2:</strong>
+                    <br>50 soni 200 ning necha foizi?
+                    <br>Yechim: 50/200 × 100 = 25%
+                </div>
+                
+                <button class="btn-practice" onclick="alert('Mashq sahifasi tez orada qo\'shiladi!')">Mashq qilish</button>
+            </div>
+
+            <div class="lesson-card">
+                <h3>5. Perimetr va Yuz</h3>
+                <p>Geometrik shakllarning perimetri va yuzini hisoblash.</p>
+                
+                <div class="example-box">
+                    <strong>To'rtburchak:</strong>
+                    <br>Perimetr: P = 2(a + b)
+                    <br>Yuz: S = a × b
+                    <br><br>
+                    <strong>Misol:</strong>
+                    <br>a = 5, b = 3
+                    <br>P = 2(5 + 3) = 16
+                    <br>S = 5 × 3 = 15
+                </div>
+                
+                <button class="btn-practice" onclick="alert('Mashq sahifasi tez orada qo\'shiladi!')">Mashq qilish</button>
+            </div>
+
+            <div class="lesson-card">
+                <h3>6. Proporsiya</h3>
+                <p>Proporsiya - bu ikki nisbatning tengligi.</p>
+                
+                <div class="example-box">
+                    <strong>a/b = c/d formulasi</strong>
+                    <br><br>
+                    <strong>Misol:</strong>
+                    <br>2/3 = x/6
+                    <br>Yechim: x = (2 × 6) / 3 = 4
+                </div>
+                
+                <button class="btn-practice" onclick="alert('Mashq sahifasi tez orada qo\'shiladi!')">Mashq qilish</button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <button onclick="window.close()" style="padding: 1rem 3rem; background: #f3f4f6; border: none; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 1rem;">Yopish</button>
+        </div>
+    </div>
+</body>
+</html>

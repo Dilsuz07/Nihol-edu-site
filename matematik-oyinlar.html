@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematik O'yinlar - EduPlatform</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 2rem; }
+        .game-container { max-width: 1400px; margin: 0 auto; }
+        .game-header { text-align: center; color: white; margin-bottom: 3rem; }
+        .game-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .game-card { background: white; border-radius: 25px; padding: 2.5rem; text-align: center; transition: all 0.3s ease; }
+        .game-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .game-icon { font-size: 5rem; margin-bottom: 1.5rem; display: block; }
+        .game-card h3 { font-size: 1.8rem; color: #667eea; margin-bottom: 1rem; }
+        .game-card p { color: #6B7280; margin-bottom: 1.5rem; line-height: 1.7; }
+        .btn-play { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 1rem 2.5rem; border: none; border-radius: 15px; cursor: pointer; font-weight: 700; font-size: 1.1rem; }
+        .btn-play:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+        .score-badge { background: #ffd700; color: #1A1A1A; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; display: inline-block; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>🎮 Matematik O'yinlar</h1>
+            <p style="font-size: 1.3rem; opacity: 0.95;">O'yin orqali matematikani o'rganing!</p>
+        </div>
+
+        <div class="games-grid">
+            <div class="game-card">
+                <span class="game-icon">🧮</span>
+                <span class="score-badge">Boshlang'ich</span>
+                <h3>Tez Hisoblash</h3>
+                <p>60 soniya ichida maksimal ko'p misollarni yeching. Qo'shish, ayirish, ko'paytirish va bo'lish!</p>
+                <button class="btn-play" onclick="playQuickMath()">O'ynash</button>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🎯</span>
+                <span class="score-badge">O'rta</span>
+                <h3>Maqsadga Yetish</h3>
+                <p>Berilgan sonlardan foydalanib maqsad soniga yeting. Logik fikrlash va strategiya!</p>
+                <button class="btn-play" onclick="playTargetGame()">O'ynash</button>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🧩</span>
+                <span class="score-badge">Qiyin</span>
+                <h3>Matematik Jumboq</h3>
+                <p>Murakkab matematik jumboqlar va rebuslarni yeching. Ijodiy yondashuv talab etiladi!</p>
+                <button class="btn-play" onclick="playPuzzle()">O'ynash</button>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🏆</span>
+                <span class="score-badge">Raqobat</span>
+                <h3>Matematika Turniri</h3>
+                <p>Boshqa o'quvchilar bilan raqobatlashing. Haftalik turnir va mukofotlar!</p>
+                <button class="btn-play" onclick="alert('Turnir tez orada boshlanadi!')">Ishtirok etish</button>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🎲</span>
+                <span class="score-badge">Tasodifiy</span>
+                <h3>Sonlar Kubigi</h3>
+                <p>Kubiklar tashlang va kerakli sonni hosil qiling. Omad va hisob-kitob!</p>
+                <button class="btn-play" onclick="playDiceGame()">O'ynash</button>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🌟</span>
+                <span class="score-badge">Yangi</span>
+                <h3>Yulduzlar Safari</h3>
+                <p>Kosmosda sayohat qiling va har bir planetada matematik vazifalarni bajaring!</p>
+                <button class="btn-play" onclick="alert('Tez orada qo\'shiladi!')">Sayohat</button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <button onclick="window.close()" style="padding: 1rem 3rem; background: white; color: #667eea; border: none; border-radius: 15px; cursor: pointer; font-weight: 700; font-size: 1.1rem;">Yopish</button>
+        </div>
+    </div>
+
+    <script>
+        function playQuickMath() {
+            const gameWindow = window.open('', 'QuickMath', 'width=800,height=600');
+            gameWindow.document.write(`
+                <html>
+                <head>
+                    <title>Tez Hisoblash</title>
+                    <style>
+                        body { font-family: Arial; text-align: center; padding: 2rem; background: #f5f7fa; }
+                        .question { font-size: 3rem; margin: 2rem 0; color: #667eea; }
+                        .timer { font-size: 2rem; color: #f5576c; margin-bottom: 2rem; }
+                        input { padding: 1rem; font-size: 2rem; border: 2px solid #667eea; border-radius: 10px; width: 200px; text-align: center; }
+                        .score { font-size: 1.5rem; color: #1EB53A; margin-top: 1rem; }
+                        button { padding: 1rem 2rem; background: #667eea; color: white; border: none; border-radius: 10px; font-size: 1.2rem; cursor: pointer; margin-top: 1rem; }
+                    </style>
+                </head>
+                <body>
+                    <h1>🧮 Tez Hisoblash</h1>
+                    <div class="timer">Vaqt: <span id="time">60</span>s</div>
+                    <div class="question" id="question"></div>
+                    <input type="number" id="answer" autofocus>
+                    <button onclick="checkAnswer()">Tekshirish</button>
+                    <div class="score">Ball: <span id="score">0</span></div>
+                    <script>
+                        let timeLeft = 60;
+                        let score = 0;
+                        let currentAnswer;
+
+                        function newQuestion() {
+                            const a = Math.floor(Math.random() * 20) + 1;
+                            const b = Math.floor(Math.random() * 20) + 1;
+                            const ops = ['+', '-', '×'];
+                            const op = ops[Math.floor(Math.random() * ops.length)];
+                            
+                            document.getElementById('question').textContent = a + ' ' + op + ' ' + b + ' = ?';
+                            
+                            if (op === '+') currentAnswer = a + b;
+                            else if (op === '-') currentAnswer = a - b;
+                            else currentAnswer = a * b;
+                            
+                            document.getElementById('answer').value = '';
+                            document.getElementById('answer').focus();
+                        }
+
+                        function checkAnswer() {
+                            const userAnswer = parseInt(document.getElementById('answer').value);
+                            if (userAnswer === currentAnswer) {
+                                score++;
+                                document.getElementById('score').textContent = score;
+                                newQuestion();
+                            } else {
+                                alert('Noto\\'g\\'ri! To\\'g\\'ri javob: ' + currentAnswer);
+                                newQuestion();
+                            }
+                        }
+
+                        document.getElementById('answer').addEventListener('keypress', (e) => {
+                            if (e.key === 'Enter') checkAnswer();
+                        });
+
+                        setInterval(() => {
+                            timeLeft--;
+                            document.getElementById('time').textContent = timeLeft;
+                            if (timeLeft === 0) {
+                                alert('O\\'yin tugadi! Sizning ballingiz: ' + score);
+                                window.close();
+                            }
+                        }, 1000);
+
+                        newQuestion();
+                    </script>
+                </body>
+                </html>
+            `);
+        }
+
+        function playTargetGame() {
+            alert('Maqsadga Yetish o\\'yini tez orada qo\\'shiladi!');
+        }
+
+        function playPuzzle() {
+            alert('Matematik Jumboqlar o\\'yini tez orada qo\\'shiladi!');
+        }
+
+        function playDiceGame() {
+            alert('Sonlar Kubigi o\\'yini tez orada qo\\'shiladi!');
+        }
+    </script>
+</body>
+</html>

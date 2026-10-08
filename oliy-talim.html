@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oliy Ta'lim - Nihol</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            padding: 10rem 2rem 4rem;
+            background: linear-gradient(135deg, #1EB53A 0%, #0099CC 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url('data:image/svg+xml,<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="star-pattern" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse"><polygon points="60,20 68,48 96,48 74,64 82,92 60,76 38,92 46,64 24,48 52,48" fill="white" opacity="0.08"/><circle cx="60" cy="60" r="3" fill="rgba(212,175,55,0.3)"/></pattern></defs><rect width="120" height="120" fill="url(%23star-pattern)"/></svg>');
+            opacity: 0.4;
+        }
+        
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header-decoration {
+            position: relative;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .university-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(212, 175, 55, 0.3);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .header-icon-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .header-icon-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .header-icon-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px) rotate(5deg);
+        }
+        
+        .header-icon-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: rgba(212, 175, 55, 0.6);
+            border-radius: 2px;
+        }
+        
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .subject-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .subject-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subject-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--uzbek-blue);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">✦</span>
+                <span class="logo-text">Nihol</span>
+            </a>
+            <a href="index.html" class="btn btn-primary">Orqaga</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Oliy Ta'lim</h1>
+        <p style="font-size: 1.2rem; opacity: 0.95;">Universitet va kollej kurslari</p>
+        
+        <div class="header-decoration">
+            <div class="university-badge">
+                <span>🎓</span>
+                <span>O'zbekistonning nufuzli universitet kurslari</span>
+            </div>
+            <div class="header-icon-grid">
+                <div class="header-icon-item">📖</div>
+                <div class="header-icon-item">🏛️</div>
+                <div class="header-icon-item">🔬</div>
+                <div class="header-icon-item">⚖️</div>
+                <div class="header-icon-item">💼</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="subjects-grid">
+        <div class="subject-card">
+            <div class="subject-icon">⚖️</div>
+            <h3>Yuridik fanlar</h3>
+            <p>Huquq asoslari va qonunchilik</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">💼</div>
+            <h3>Iqtisodiyot</h3>
+            <p>Makro va mikroiqtisodiyot kurslari</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">🏗️</div>
+            <h3>Arxitektura</h3>
+            <p>Dizayn va loyihalash asoslari</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">💊</div>
+            <h3>Tibbiyot</h3>
+            <p>Anatomiya va fiziologiya</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">🎓</div>
+            <h3>Pedagogika</h3>
+            <p>Ta'lim psixologiyasi va metodika</p>
+        </div>
+        
+        <div class="subject-card">
+            <div class="subject-icon">🔬</div>
+            <h3>Texnika fanlari</h3>
+            <p>Muhandislik va texnologiya</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

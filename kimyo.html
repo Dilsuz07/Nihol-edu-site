@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimyo - Nihol</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .subject-page {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .subject-header {
+            padding: 10rem 2rem 3rem;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subject-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="15" fill="none" stroke="white" stroke-width="2" opacity="0.15"/><circle cx="30" cy="30" r="8" fill="white" opacity="0.1"/><circle cx="20" cy="20" r="4" fill="white" opacity="0.2"/><circle cx="40" cy="40" r="3" fill="white" opacity="0.2"/></svg>');
+            opacity: 0.3;
+        }
+
+        .subject-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subject-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            color: #6B7280;
+        }
+
+        .breadcrumb a {
+            color: var(--uzbek-blue);
+            font-weight: 600;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .subject-nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+
+        .subject-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+        }
+
+        .subject-nav-link {
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .subject-nav-link:hover {
+            background: var(--light-blue);
+            color: var(--uzbek-blue);
+        }
+
+        .subject-nav-link.active {
+            background: var(--uzbek-blue);
+            color: white;
+            border-color: var(--uzbek-blue);
+        }
+
+        .content-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title-icon {
+            font-size: 2.5rem;
+        }
+
+        /* Test Cards */
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .test-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .test-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--uzbek-blue);
+        }
+
+        .test-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        .test-badge {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .test-difficulty {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .difficulty-easy {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .difficulty-medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .difficulty-hard {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .test-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .test-info {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .test-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .test-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Video Cards */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 220px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .video-thumbnail::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .video-play-icon {
+            font-size: 4rem;
+            color: white;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover .video-play-icon {
+            transform: scale(1.2);
+        }
+
+        .video-duration {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .video-content {
+            padding: 1.5rem;
+        }
+
+        .video-category {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--uzbek-blue);
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .video-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .video-description {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray);
+            font-size: 0.85rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--light-gray);
+        }
+
+        /* Homework Section */
+        .homework-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .homework-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 2rem;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .homework-item:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateX(5px);
+        }
+
+        .homework-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .homework-details h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .homework-tags {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+
+        .homework-tag {
+            padding: 0.3rem 0.8rem;
+            background: var(--light-gray);
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .homework-action {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .homework-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download {
+            background: var(--uzbek-green);
+            color: white;
+        }
+
+        .btn-download:hover {
+            background: #16a834;
+            transform: translateY(-2px);
+        }
+
+        .btn-upload {
+            background: var(--light-blue);
+            color: var(--uzbek-blue);
+        }
+
+        .btn-upload:hover {
+            background: var(--uzbek-blue);
+            color: white;
+        }
+
+        /* Support Section for Struggling Students */
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .support-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 3px solid transparent;
+        }
+
+        .support-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--uzbek-green);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .support-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .support-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .support-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .support-card ul {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .support-card li {
+            padding: 0.5rem 0;
+            color: var(--gray);
+        }
+
+        .support-card li::before {
+            content: '✓';
+            color: var(--uzbek-green);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Hidden sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            .subject-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .test-grid, .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .homework-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .homework-action {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body class="subject-page">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">✦</span>
+                <span class="logo-text">Nihol</span>
+            </a>
+            <a href="orta-talim.html" class="btn btn-primary">Orqaga</a>
+        </div>
+    </nav>
+
+    <div class="subject-header">
+        <div class="subject-icon">⚗️</div>
+        <h1>Kimyo</h1>
+        <p style="font-size: 1.2rem; opacity: 0.95;">Umumiy, Organik va Noorganik Kimyo</p>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="index.html">Bosh sahifa</a>
+        <span>→</span>
+        <a href="orta-talim.html">O'rta ta'lim</a>
+        <span>→</span>
+        <span>Kimyo</span>
+    </div>
+
+    <nav class="subject-nav">
+        <div class="subject-nav-container">
+            <a href="#testlar" class="subject-nav-link active" onclick="showSection('testlar')">📝 Testlar</a>
+            <a href="#video-darslar" class="subject-nav-link" onclick="showSection('video-darslar')">🎥 Video Darslar</a>
+            <a href="#uyga-vazifa" class="subject-nav-link" onclick="showSection('uyga-vazifa')">📚 Uyga Vazifa</a>
+            <a href="#qollab-quvvatlash" class="subject-nav-link" onclick="showSection('qollab-quvvatlash')">🤝 Past O'zlashtiruvchilar Uchun</a>
+        </div>
+    </nav>
+
+    <!-- Testlar Section -->
+    <section id="testlar" class="content-section active">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-title-icon">📝</span>
+                Online Testlar
+            </h2>
+            <div class="test-grid">
+                <div class="test-card">
+                    <div class="test-header">
+                        <span class="test-badge">8-sinf</span>
+                        <span class="test-difficulty difficulty-easy">Oson</span>
+                    </div>
+                    <h3>Atom Tuzilishi</h3>
+                    <p style="color: var(--gray);">Atom tuzilishi, protonlar, neytronlar va elektronlar haqida asosiy bilimlar</p>
+                    <div class="test-info">
+                        <div class="test-info-item">
+                            <span>📋</span>
+                            <span>20 savol</span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>⏱️</span>
+                            <span>25 daqiqa</span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>📊</span>
+                            <span>100 ball</span>
+                        </div>
+                    </div>
+                    <button class="test-button">Testni Boshlash</button>
+                </div>
+
+                <div class="test-card">
+                    <div class="test-header">
+                        <span class="test-badge">9-sinf</span>
+                        <span class="test-difficulty difficulty-medium">O'rta</span>
+                    </div>
+                    <h3>Kimyoviy Reaksiyalar</h3>
+                    <p style="color: var(--gray);">Kimyoviy reaksiyalar turlari, tenglamalar tuzish va koeffitsiyentlarni aniqlash</p>
+                    <div class="test-info">
+                        <div class="test-info-item">
+                            <span>📋</span>
+                            <span>25 savol</span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>⏱️</span>
+                            <span>35 daqiqa</span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>📊</span>
+                            <span>100 ball</span>
+                        </div>
+                    </div>
+                    <button class="test-button">Testni Boshlash</button>
+                </div>
+
+                <div class="test-card">
+                    <div class="test-header">
+                        <span class="test-badge">10-sinf</span>
+                        <span class="test-difficulty difficulty-hard">Qiyin</span>
+                    </div>
+                    <h3>Organik Kimyo</h3>
+                    <p style="color: var(--gray);">Organik birikmalar, uglevodorodlar va ularning hosilalari</p>
+                    <div class="test-info">
+                        <div class="test-info-item">
+                            <span>📋</span>
+                            <span>30 savol</span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>⏱️</span>
+                            <span>45 daqiqa</span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>📊</span>
+                            <span>100 ball</span>
+                        </div>
+                    </div>
+                    <button class="test-button">Testni Boshlash</button>
+                </div>
+
+                <div class="test-card">
+                    <div class="test-header">
+                        <span class="test-badge">9-sinf</span>
+                        <span class="test-difficulty difficulty-easy">Oson</span>
+                    </div>
+                    <h3>Davriy Jadval</h3>
+                    <p style="color: var(--gray);">Davriy jadval, elementlar guruhlari va davrlari</p>
+                    <div class="test-info">
+                        <div class="test-info-item">
+                            <span>📋</span>
+                            <span>18 savol</span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>⏱️</span>
+                            <span>20 daqiqa</span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>📊</span>
+                            <span>100 ball</span>
+                        </div>
+                    </div>
+                    <button class="test-button">Testni Boshlash</button>
+                </div>
+
+                <div class="test-card">
+                    <div class="test-header">
+                        <span class="test-badge">10-sinf</span>
+                        <span class="test-difficulty difficulty-medium">O'rta</span>
+                    </div>
+                    <h3>Kislotalar va Asoslar</h3>
+                    <p style="color: var(--gray);">Kislotalar, asoslar va tuzlar. pH ko'rsatkichi va neytrallanish</p>
+                    <div class="test-info">
+                        <div class="test-info-item">
+                            <span>📋</span>
+                            <span>22 savol</span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>⏱️</span>
+                            <span>30 daqiqa</span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>📊</span>
+                            <span>100 ball</span>
+                        </div>
+                    </div>
+                    <button class="test-button">Testni Boshlash</button>
+                </div>
+
+                <div class="test-card">
+                    <div class="test-header">
+                        <span class="test-badge">11-sinf</span>
+                        <span class="test-difficulty difficulty-hard">Qiyin</span>
+                    </div>
+                    <h3>Elektrokimyo</h3>
+                    <p style="color: var(--gray);">Elektrolitik dissotsilanish, elektroliz va galvanik elementlar</p>
+                    <div class="test-info">
+                        <div class="test-info-item">
+                            <span>📋</span>
+                            <span>28 savol</span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>⏱️</span>
+                            <span>50 daqiqa</span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>📊</span>
+                            <span>100 ball</span>
+                        </div>
+                    </div>
+                    <button class="test-button">Testni Boshlash</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Darslar Section -->
+    <section id="video-darslar" class="content-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-title-icon">🎥</span>
+                Video Darslar
+            </h2>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="video-play-icon">▶</div>
+                        <div class="video-duration">28:15</div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-category">8-sinf · Umumiy kimyo</span>
+                        <h3>Atom Tuzilishi va Davriy Jadval</h3>
+                        <p class="video-description">Atom tuzilishi, elementlar davriy tizimi va kimyoviy bog'lanish asoslari.</p>
+                        <div class="video-meta">
+                            <span>👁️ 18,340 ko'rish</span>
+                            <span>⭐ 4.9/5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="video-play-icon">▶</div>
+                        <div class="video-duration">35:20</div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-category">9-sinf · Kimyoviy reaksiyalar</span>
+                        <h3>Kimyoviy Tenglamalar</h3>
+                        <p class="video-description">Kimyoviy tenglamalar tuzish, koeffitsiyentlarni aniqlash va reaksiya turlari.</p>
+                        <div class="video-meta">
+                            <span>👁️ 16,780 ko'rish</span>
+                            <span>⭐ 4.8/5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="video-play-icon">▶</div>
+                        <div class="video-duration">42:10</div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-category">10-sinf · Organik kimyo</span>
+                        <h3>Uglevodorodlar</h3>
+                        <p class="video-description">Alkanlar, alkenlar va alkinlar. Organik birikmalar nomlanishi va xossalari.</p>
+                        <div class="video-meta">
+                            <span>👁️ 14,520 ko'rish</span>
+                            <span>⭐ 4.7/5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="video-play-icon">▶</div>
+                        <div class="video-duration">30:45</div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-category">9-sinf · Eritma va eruvchi</span>
+                        <h3>Eritmalar va Konsentratsiya</h3>
+                        <p class="video-description">Eritmalar turlari, konsentratsiya hisoblash va erish jarayoni.</p>
+                        <div class="video-meta">
+                            <span>👁️ 12,960 ko'rish</span>
+                            <span>⭐ 4.8/5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="video-play-icon">▶</div>
+                        <div class="video-duration">38:30</div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-category">10-sinf · Kislotalar</span>
+                        <h3>Kislotalar va Asoslar</h3>
+                        <p class="video-description">Kislotalar va asoslarning xossalari, pH ko'rsatkichi va indikatorlar.</p>
+                        <div class="video-meta">
+                            <span>👁️ 15,430 ko'rish</span>
+                            <span>⭐ 4.9/5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="video-play-icon">▶</div>
+                        <div class="video-duration">33:20</div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-category">11-sinf · Elektrokimyo</span>
+                        <h3>Elektroliz va Galvanik Elementlar</h3>
+                        <p class="video-description">Elektrokimyoviy jarayonlar, elektroliz va batareyalar ishlash prinsipi.</p>
+                        <div class="video-meta">
+                            <span>👁️ 11,280 ko'rish</span>
+                            <span>⭐ 4.7/5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uyga Vazifa Section -->
+    <section id="uyga-vazifa" class="content-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-title-icon">📚</span>
+                Uyga Vazifa
+            </h2>
+            <div class="homework-list">
+                <div class="homework-item">
+                    <div class="homework-number">1</div>
+                    <div class="homework-details">
+                        <h3>9-sinf: Atom Tuzilishi va Davriy Jadval</h3>
+                        <p style="color: var(--gray);">Atom tuzilishi, kimyoviy elementlar va davriy jadval bo'yicha mashqlar</p>
+                        <div class="homework-tags">
+                            <span class="homework-tag">📅 Muddati: 7 kun</span>
+                            <span class="homework-tag">📊 Ball: 50</span>
+                            <span class="homework-tag">📁 PDF format</span>
+                        </div>
+                    </div>
+                    <div class="homework-action">
+                        <button class="homework-btn btn-download">📥 Yuklab olish</button>
+                        <button class="homework-btn btn-upload">📤 Topshirish</button>
+                    </div>
+                </div>
+
+                <div class="homework-item">
+                    <div class="homework-number">2</div>
+                    <div class="homework-details">
+                        <h3>10-sinf: Kimyoviy Reaksiyalar - Amaliyot</h3>
+                        <p style="color: var(--gray);">Reaksiya tenglamalarini muvozanatlash va hisob-kitoblar</p>
+                        <div class="homework-tags">
+                            <span class="homework-tag">📅 Muddati: 10 kun</span>
+                            <span class="homework-tag">📊 Ball: 60</span>
+                            <span class="homework-tag">📁 PDF format</span>
+                        </div>
+                    </div>
+                    <div class="homework-action">
+                        <button class="homework-btn btn-download">📥 Yuklab olish</button>
+                        <button class="homework-btn btn-upload">📤 Topshirish</button>
+                    </div>
+                </div>
+
+                <div class="homework-item">
+                    <div class="homework-number">3</div>
+                    <div class="homework-details">
+                        <h3>11-sinf: Organik Birikmalar - Strukturalar</h3>
+                        <p style="color: var(--gray);">Organik birikmalar struktura formulalarini chizish va nomlash</p>
+                        <div class="homework-tags">
+                            <span class="homework-tag">📅 Muddati: 14 kun</span>
+                            <span class="homework-tag">📊 Ball: 70</span>
+                            <span class="homework-tag">📁 PDF format</span>
+                        </div>
+                    </div>
+                    <div class="homework-action">
+                        <button class="homework-btn btn-download">📥 Yuklab olish</button>
+                        <button class="homework-btn btn-upload">📤 Topshirish</button>
+                    </div>
+                </div>
+
+                <div class="homework-item">
+                    <div class="homework-number">4</div>
+                    <div class="homework-details">
+                        <h3>9-sinf: Geometriya - Uchburchaklar Xossalari</h3>
+                        <p style="color: var(--gray);">pH hisoblash, indikatorlar va neytrallanish reaksiyalari</p>
+                        <div class="homework-tags">
+                            <span class="homework-tag">📅 Muddati: 7 kun</span>
+                            <span class="homework-tag">📊 Ball: 55</span>
+                            <span class="homework-tag">📁 PDF format</span>
+                        </div>
+                    </div>
+                    <div class="homework-action">
+                        <button class="homework-btn btn-download">📥 Yuklab olish</button>
+                        <button class="homework-btn btn-upload">📤 Topshirish</button>
+                    </div>
+                </div>
+
+                <div class="homework-item">
+                    <div class="homework-number">5</div>
+                    <div class="homework-details">
+                        <h3>10-sinf: Eritmalar va Konsentratsiya</h3>
+                        <p style="color: var(--gray);">Eritma tayyorlash va massa ulushini hisoblash</p>
+                        <div class="homework-tags">
+                            <span class="homework-tag">📅 Muddati: 12 kun</span>
+                            <span class="homework-tag">📊 Ball: 65</span>
+                            <span class="homework-tag">📁 PDF format</span>
+                        </div>
+                    </div>
+                    <div class="homework-action">
+                        <button class="homework-btn btn-download">📥 Yuklab olish</button>
+                        <button class="homework-btn btn-upload">📤 Topshirish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past O'zlashtiruvchilar Uchun Section -->
+    <section id="qollab-quvvatlash" class="content-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-title-icon">🤝</span>
+                Past O'zlashtiruvchi O'quvchilar Uchun Qo'llab-quvvatlash
+            </h2>
+            <div class="support-grid">
+                <div class="support-card">
+                    <span class="support-icon">📖</span>
+                    <h3>Soddalashtirilgan Darsliklar</h3>
+                    <p>Murakkab mavzularni oson tilda tushuntirish. Qadamma-qadam yondashuv.</p>
+                    <ul>
+                        <li>Oddiy misol va vazifalar</li>
+                        <li>Ko'rgazmali materialar</li>
+                        <li>Bosqichma-bosqich tahlil</li>
+                        <li>Amaliy mashqlar</li>
+                    </ul>
+                    <button class="btn btn-hero-primary" style="width: 100%;">Boshlash</button>
+                </div>
+
+                <div class="support-card">
+                    <span class="support-icon">👨‍🏫</span>
+                    <h3>Shaxsiy Repetitor</h3>
+                    <p>Tajribali o'qituvchilar bilan bir-birlik darslar. Individual yondashuv.</p>
+                    <ul>
+                        <li>Haftada 2 marta dars</li>
+                        <li>45 daqiqalik dars</li>
+                        <li>Shaxsiy dastur</li>
+                        <li>Doimiy monitoring</li>
+                    </ul>
+                    <button class="btn btn-hero-primary" style="width: 100%;">Yozilish</button>
+                </div>
+
+                <div class="support-card">
+                    <span class="support-icon">🎮</span>
+                    <h3>Interaktiv O'yinlar</h3>
+                    <p>O'yin orqali o'rganish. Qiziqarli va samarali ta'lim usuli.</p>
+                    <ul>
+                        <li>Matematik o'yinlar</li>
+                        <li>Rebuslar va jumboqlar</li>
+                        <li>Raqobat rejimlari</li>
+                        <li>Mukofot tizimi</li>
+                    </ul>
+                    <button class="btn btn-hero-primary" style="width: 100%;">O'ynash</button>
+                </div>
+
+                <div class="support-card">
+                    <span class="support-icon">📝</span>
+                    <h3>Qo'shimcha Mashqlar</h3>
+                    <p>Asosiy bilimlarni mustahkamlash uchun maxsus topshiriqlar.</p>
+                    <ul>
+                        <li>Oson darajali testlar</li>
+                        <li>Takroriy mashqlar</li>
+                        <li>Video yechimlar</li>
+                        <li>Tez-tez xato qilinadigan masalalar</li>
+                    </ul>
+                    <button class="btn btn-hero-primary" style="width: 100%;">Mashq qilish</button>
+                </div>
+
+                <div class="support-card">
+                    <span class="support-icon">💬</span>
+                    <h3>Guruhli Mashg'ulotlar</h3>
+                    <p>Kichik guruhlarda o'rganish. O'quvchilar bilan tajriba almashish.</p>
+                    <ul>
+                        <li>5-7 kishilik guruhlar</li>
+                        <li>Haftada 3 marta</li>
+                        <li>Ijtimoiy o'rganish</li>
+                        <li>Hamkorlikda ishlash</li>
+                    </ul>
+                    <button class="btn btn-hero-primary" style="width: 100%;">Guruhga qo'shilish</button>
+                </div>
+
+                <div class="support-card">
+                    <span class="support-icon">📊</span>
+                    <h3>Progress Kuzatuvi</h3>
+                    <p>O'quvchi natijalarini doimiy kuzatish va tahlil qilish.</p>
+                    <ul>
+                        <li>Haftalik hisobotlar</li>
+                        <li>Grafik ko'rsatkichlar</li>
+                        <li>Ota-onalar bilan aloqa</li>
+                        <li>Individual tavsiyalar</li>
+                    </ul>
+                    <button class="btn btn-hero-primary" style="width: 100%;">Ko'rish</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Nihol. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav links
+            document.querySelectorAll('.subject-nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked link
+            event.target.classList.add('active');
+            
+            // Scroll to content
+            window.scrollTo({
+                top: 400,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
